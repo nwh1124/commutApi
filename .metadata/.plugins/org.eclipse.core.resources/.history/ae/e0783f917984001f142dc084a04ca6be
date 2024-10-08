@@ -1,0 +1,28 @@
+package com.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/api/data")
+public class UserServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 응답 콘텐츠 타입을 JSON으로 설정
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8"); // 문자 인코딩 설정
+        
+        PrintWriter out = response.getWriter();
+        
+        // JSON 형식으로 응답 내용 작성
+        String jsonResponse = "{\"message\": \"Hello from the server!\"}";
+
+        // 클라이언트에 응답 데이터 전송
+        out.print(jsonResponse);
+        out.flush(); // 출력 버퍼 비우기
+    }
+}
